@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Test for Students | Practice & Improve Speed</title>
+  <meta name="description" content="Take a free typing test designed for students. Animated progress, instant feedback, mobile-friendly. Improve your typing speed now!">
+  <meta name="keywords" content="typing test, student, practice, speed, accuracy, free online">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="fade-in">
+    <nav class="navbar">
+      <div class="logo">Student<span class="accent">Tools</span></div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="typing.html" class="active">Typing Test</a></li>
+        <li><a href="resume.html">Resume Templates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="typing-area slide-up">
+      <h1>Free Typing Test</h1>
+      <p class="desc">Type the sentence below. Your speed & accuracy will be measured in real time!</p>
+      <div class="typing-test-box">
+        <div id="test-text" class="test-text">The quick brown fox jumps over the lazy dog.</div>
+        <textarea id="user-input" rows="3" placeholder="Start typing here..." autocomplete="off"></textarea>
+        <div class="typing-controls">
+          <button onclick="startTest()" class="btn pulse">Start</button>
+          <button onclick="resetTest()" class="btn-outline">Reset</button>
+        </div>
+        <div id="progress-bar"><div id="progress"></div></div>
+        <div id="result"></div>
+      </div>
+    </section>
+    <section class="tips fade-in">
+      <h2>Improve with the Best</h2>
+      <a href="https://www.udemy.com/course/learn-touch-typing/?affcode=your-affiliate" target="_blank" rel="noopener sponsored" class="affiliate-link card-link">Recommended Typing Course <span>→</span></a>
+    </section>
+  </main>
+  <footer>
+    <div>
+      &copy; 2025 StudentTools
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
