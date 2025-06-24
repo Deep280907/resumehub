@@ -1,75 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Student Tools: Free Typing Test & Resume Templates</title>
-  <meta name="description" content="Unlock your potential: Free typing tests, resume templates, & tools for students. Fast, mobile, SEO-optimized. Start improving your skills today!">
-  <meta name="keywords" content="free typing test, resume templates, student tools, career, online, SEO">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="img/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerCraft Pro | Ultimate Resume & Typing Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme */
+            --bg: #f8faff;
+            --text: #1a1a2e;
+            --primary: #4361ee;
+            --secondary: #f72585;
+            --card: #ffffff;
+            --border: rgba(0,0,0,0.1);
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --nav-bg: rgba(255,255,255,0.92);
+            
+            /* Animation */
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --speed: 0.02s; /* Ultra-fast 20ms response */
+        }
+
+        /* Dark Theme */
+        .dark-mode {
+            --bg: #0f0e17;
+            --text: #fffffe;
+            --primary: #7f5af0;
+            --secondary: #ff8906;
+            --card: #1f1b2e;
+            --border: rgba(255,255,255,0.1);
+            --shadow: 0 4px 20px rgba(0,0,0,0.3); 
+            --nav-bg: rgba(15,14,23,0.92);
+        }
+
+        /* Base & Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.5s var(--ease), color 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        ::selection {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Layout Components */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s var(--ease);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 1.8rem;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .logo-text {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: color var(--speed) var(--ease);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: width 0.3s var(--ease);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--text);
+            transition: transform 0.3s var(--ease);
+            padding: 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .dark-mode .theme-toggle:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--speed) var(--ease);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(67,97,238,0.1) 0%, rgba(0,0,0,0) 50%);
+            z-index: -1;
+            animation: pulse 15s infinite alternate;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            animation: fadeIn 0.8s var(--ease);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--text), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textShine 8s linear infinite;
+            background-size: 200% auto;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            max-width: 600px;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--card);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all var(--speed) var(--ease);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.8s var(--ease) forwards;
+            opacity: 0;
+        }
+        
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Typing Test Preview */
+        .typing-preview {
+            margin-top: 80px;
+            background: var(--bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            animation: slideIn 0.8s var(--ease);
+        }
+        
+        .typing-header {
+            padding: 15px 25px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 500;
+        }
+        
+        .typing-body {
+            padding: 25px;
+        }
+        
+        .typing-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        /* Resume Templates Preview */
+        .templates-preview {
+            margin-top: 80px;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .template-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all var(--speed) var(--ease);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.8s var(--ease) forwards;
+            opacity: 0;
+        }
+        
+        .template-card:nth-child(1) { animation-delay: 0.4s; }
+        .template-card:nth-child(2) { animation-delay: 0.5s; }
+        .template-card:nth-child(3) { animation-delay: 0.6s; }
+        
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        .template-img {
+            height: 350px;
+            background: var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .template-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s var(--ease);
+        }
+        
+        .template-card:hover .template-img::after {
+            opacity: 1;
+        }
+        
+        .template-info {
+            padding: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--card);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all var(--speed) var(--ease);
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all var(--speed) var(--ease);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            opacity: 0.7;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        
+        @keyframes textShine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-image {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                text-align: center;
+                padding-top: 100px;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .hero-image {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                width: 100%;
+                max-width: 500px;
+                margin: 50px auto 0;
+                animation: float 6s ease-in-out infinite;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .feature-card,
+            .template-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="fade-in">
-    <nav class="navbar">
-      <div class="logo">Student<span class="accent">Tools</span></div>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="typing.html">Typing Test</a></li>
-        <li><a href="resume.html">Resume Templates</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section class="hero slide-up">
-      <div class="hero-text">
-        <h1><span class="accent">Unlock</span> Your Student Potential!</h1>
-        <p>Free, fast, and fun typing tests & resume tools. Curated for ambitious students. <br>Mobile-ready. No ads. No catch.</p>
-        <a href="typing.html" class="btn pulse">Start Typing Test</a>
-        <a href="resume.html" class="btn-outline">Get Resume Templates</a>
-      </div>
-      <img src="img/hero-typing.svg" alt="Student typing on laptop" class="hero-img bounce-in">
-    </section>
-    <section class="features fade-in">
-      <h2>What You Get</h2>
-      <div class="feature-cards">
-        <div class="card pop-in">
-          <img src="img/keyboard.svg" alt="Typing Practice" loading="lazy">
-          <h3>Typing Practice</h3>
-          <p>Boost speed & accuracy with real-time feedback and animated progress.</p>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-rocket logo-icon"></i>
+                <span class="logo-text">CareerCraft Pro</span>
+            </a>
+            <nav>
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="resume.html" class="nav-link">Resume Builder</a>
+                <a href="typing.html" class="nav-link">Typing Test</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
         </div>
-        <div class="card pop-in" style="animation-delay:.1s;">
-          <img src="img/resume.svg" alt="Resume Templates" loading="lazy">
-          <h3>Resume Templates</h3>
-          <p>Modern, downloadable resumes. Easy to edit. Get noticed by recruiters.</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Complete Career Success Platform</h1>
+                <p>Create professional resumes that land interviews and improve your typing speed with our AI-powered tools. All in one place!</p>
+                <div class="cta-buttons">
+                    <a href="resume.html" class="btn btn-primary">Build Your Resume</a>
+                    <a href="typing.html" class="btn btn-secondary">Start Typing Test</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/career-illustration.svg" alt="Career success illustration">
+            </div>
         </div>
-        <div class="card pop-in" style="animation-delay:.2s;">
-          <img src="img/affiliate.svg" alt="Student Tools & Courses" loading="lazy">
-          <h3>Student Tools & Courses</h3>
-          <p>Hand-picked learning resources & books with <span class="accent">trusted</span> affiliate links.</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container section-title">
+            <h2>Features That Empower You</h2>
+            <p>Explore our powerful tools designed to enhance your career journey.</p>
         </div>
-      </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                <h3 class="feature-title">AI Resume Builder</h3>
+                <p>Create stunning resumes with AI suggestions tailored to your career goals.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-keyboard"></i></div>
+                <h3 class="feature-title">Typing Master</h3>
+                <p>Practice typing with various passages and track your progress over time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                <h3 class="feature-title">ATS Optimization</h3>
+                <p>Ensure your resume passes through Applicant Tracking Systems with ease.</p>
+            </div>
+        </div>
     </section>
-    <section class="cta fade-in">
-      <h2>Ready to Grow?</h2>
-      <p>Sharpen your skills. Land your dream job. Join 1000+ students improving every day.<br>
-        <a href="contact.html" class="btn">Contact for Advice</a>
-      </p>
+
+    <!-- Typing Test Section -->
+    <section class="typing-preview">
+        <div class="container typing-header">
+            <h2>Typing Test Preview</h2>
+        </div>
+        <div class="typing-body">
+            <p class="typing-text">Select a passage to start your typing practice. Improve your speed and accuracy with our engaging content.</p>
+            <button class="btn btn-primary" id="startTypingTest">Start Typing Test</button>
+        </div>
     </section>
-  </main>
-  <footer>
-    <div>
-      <span>&copy; 2025 StudentTools</span> ·
-      <a href="https://github.com/Deep280907" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </footer>
-  <!-- Google Analytics (replace G-XXXX) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');
-  </script>
+
+    <!-- Resume Templates Section -->
+    <section class="templates-preview">
+        <div class="container section-title">
+            <h2>Choose Your Resume Template</h2>
+            <p>We offer over 20 professionally designed templates to suit your style.</p>
+        </div>
+        <div class="templates-grid">
+            <div class="template-card">
+                <div class="template-img" style="background-image: url('assets/template1.png');"></div>
+                <div class="template-info">
+                    <h4>Modern Template</h4>
+                    <p>Perfect for corporate jobs.</p>
+                </div>
+            </div>
+            <div class="template-card">
+                <div class="template-img" style="background-image: url('assets/template2.png');"></div>
+                <div class="template-info">
+                    <h4>Creative Template</h4>
+                    <p>Ideal for creative industries.</p>
+                </div>
+            </div>
+            <div class="template-card">
+                <div class="template-img" style="background-image: url('assets/template3.png');"></div>
+                <div class="template-info">
+                    <h4>Minimal Template</h4>
+                    <p>For a clean and simple look.</p>
+                </div>
+            </div>
+            <!-- Add more templates as needed -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>About Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2023 CareerCraft Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Typing Test Logic
+        document.getElementById('startTypingTest').addEventListener('click', () => {
+            // Logic to start typing test
+            alert('Typing test started!'); // Placeholder for actual functionality
+        });
+    </script>
 </body>
 </html>
