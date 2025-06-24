@@ -1,53 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <title>Resume Templates for Students | Free Download & Tools</title>
-  <meta name="description" content="Download free, modern resume templates for students. Explore top affiliate tools & courses to boost your career. Mobile-friendly, ad-free.">
-  <meta name="keywords" content="resume templates, students, free download, affiliate, tools, career">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <title>AI Resume Builder | CareerBoost Pro</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header class="fade-in">
-    <nav class="navbar">
-      <div class="logo">Student<span class="accent">Tools</span></div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="typing.html">Typing Test</a></li>
-        <li><a href="resume.html" class="active">Resume Templates</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section class="resume-section slide-up">
-      <h1>Free Resume Templates</h1>
-      <div class="resume-cards">
-        <div class="resume-card pop-in">
-          <img src="img/resume-modern-preview.png" alt="Modern Resume Template preview" loading="lazy">
-          <h3>Modern Resume (Word)</h3>
-          <a href="templates/resume-modern.docx" download class="btn">Download DOCX</a>
-        </div>
-        <div class="resume-card pop-in" style="animation-delay:.1s;">
-          <img src="img/resume-classic-preview.png" alt="Classic Resume Template preview" loading="lazy">
-          <h3>Classic Resume (PDF)</h3>
-          <a href="templates/resume-classic.pdf" download class="btn-outline">Download PDF</a>
-        </div>
-      </div>
-    </section>
-    <section class="affiliate-section fade-in">
-      <h2>Recommended Books & Tools</h2>
-      <div class="affiliate-links">
-        <a href="https://www.amazon.in/dp/1593577921?tag=your-affiliate-id" target="_blank" rel="noopener sponsored" class="affiliate-link card-link">Best Resume Book (Amazon) <span>→</span></a>
-        <a href="https://www.udemy.com/course/learn-touch-typing/?affcode=your-affiliate" target="_blank" rel="noopener sponsored" class="affiliate-link card-link">Top Typing Course (Udemy) <span>→</span></a>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div>
-      &copy; 2025 StudentTools
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">CareerBoost Pro</a>
+      <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="resume.html" class="nav-link">Resume Builder</a>
+        <a href="typing.html" class="nav-link">Typing Test</a>
+        <button id="themeToggle"><i class="fas fa-moon"></i></button>
+      </nav>
     </div>
-  </footer>
+  </header>
+
+  <main class="resume-builder">
+    <div class="container">
+      <h1>Create Your Perfect Resume</h1>
+      
+      <!-- Template Selection -->
+      <div class="template-gallery">
+        <h2>Choose from 20+ Professional Templates</h2>
+        <div class="templates">
+          <!-- Template thumbnails would go here -->
+          <div class="template" data-template="modern">
+            <img src="images/template1.jpg" alt="Modern Template">
+          </div>
+        </div>
+      </div>
+
+      <!-- Resume Editor -->
+      <div class="resume-editor">
+        <form id="resumeForm">
+          <div class="form-section">
+            <h3>Personal Information</h3>
+            <input type="text" placeholder="Full Name">
+            <!-- More form fields -->
+          </div>
+          
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-file-export"></i> Export Resume
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+  
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/resume.js"></script>
 </body>
 </html>
